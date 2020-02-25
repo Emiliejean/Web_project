@@ -19,6 +19,7 @@ v-model="password"
   <div class="error" v-html="error" />
     <br>
   <v-btn
+  dark
   class="cyan"
   @click="register">Register</v-btn>
   </div>
@@ -55,4 +56,5 @@ export default {
 .error {
   color: red;
 }
+
 </style>
