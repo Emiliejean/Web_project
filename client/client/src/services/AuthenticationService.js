@@ -5,7 +5,8 @@ export default {
     return Api().post('register', credentials)
   }
 }
+
 /* AuthenticationService.register({
-    email: 'test@gmakil.com',
+    email: 'test@gmail.com',
     password: '123'
 }) */

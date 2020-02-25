@@ -6,7 +6,7 @@ export default {
     }
 }
 
-AuthenticationService.register({
+/*AuthenticationService.register({
     email: 'test@gmail.com',
     password: '123'
-})
+})*/

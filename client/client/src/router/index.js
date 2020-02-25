@@ -1,8 +1,8 @@
+/* eslint-disable */
 import Vue from 'vue'
 import Router from 'vue-router'
-import Register from '@/components/Register'
 import HelloWorld from '@/components/HelloWorld'
-
+import Register from '@/components/Register'
 Vue.use(Router)
 
 export default new Router({
@@ -12,10 +12,11 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
-    {
-      path: '/register',
-      name: 'register',
-      component: Register
-    }
+{
+    path: '/register',
+    name: 'register',
+    component: Register
+  }
   ]
 })
+/* eslint-disable */
