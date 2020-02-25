@@ -16,16 +16,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-
-
-/*<input 
-  type="email" 
-  name="email"
-  placeholder="email"/>
-<br>
-   <input 
-   type="password" 
-  name="password"
-  v-model="password"
-  placeholder="password"/>
-    <br>*/
