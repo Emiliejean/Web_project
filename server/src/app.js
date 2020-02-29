@@ -10,8 +10,13 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
+app.post('/register', (req, res) => {
+    res.send({
+        message: `hello ${req.body.email}! your user was registered`
+    })
+})
 require('./routes')(app)
-sequelize.sync({force: true})
+sequelize.sync({force: false})
 .then(() => {
 app.listen(config.port)
 console.log(`Server started on port ${config.port}`)

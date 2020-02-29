@@ -14,7 +14,7 @@
 <script>
 import PageHeader from '@/components/Header.vue'
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     PageHeader
   }
@@ -29,5 +29,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.danger-alert {
+  color: red;
 }
 </style>
