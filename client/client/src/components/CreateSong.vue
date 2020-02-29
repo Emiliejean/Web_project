@@ -28,10 +28,10 @@
         v-model="song.album"
         ></v-text-field>
         <v-text-field
-        label="Album Image URL"
+        label="Album Image Url"
         required
         :rules="[required]"
-        v-model="song.albumImageURL"
+        v-model="song.albumImageUrl"
         ></v-text-field>
         <v-text-field
         label="Youtube ID"
@@ -44,7 +44,7 @@
     <v-flex xs8>
         <panel title="Song Structure" class="ml-2">
 <v-text-field
-        label="Tab "
+        label="Tab"
         required
         :rules="[required]"
         multi-line
@@ -82,7 +82,7 @@ export default {
         artist: null,
         genre: null,
         album: null,
-        alubmImageUrl: null,
+        albumImageUrl: null,
         youtubeId: null,
         lyrics: null,
         tab: null

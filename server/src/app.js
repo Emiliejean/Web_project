@@ -10,11 +10,6 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.post('/register', (req, res) => {
-    res.send({
-        message: `hello ${req.body.email}! your user was registered`
-    })
-})
 require('./routes')(app)
 sequelize.sync({force: false})
 .then(() => {

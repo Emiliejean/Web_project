@@ -42,24 +42,13 @@
         </v-btn>
         </v-flex>
           <v-flex xs6>
-<img class="album-image" :scr="song.albumImageUrl"/>
+<img class="album-image" :src="song.albumImageUrl"/>
         </v-flex>
       </v-layout>
         {{song.title}} -
         {{song.artist}} -
         {{song.album}}
       </div>
-       <!-- <div slot="hello">
-        <h3> YO </h3>
-    <p>
-        Hello there
-        </p>
-        </div>
-        <div slot="bye">
-            <h3>Byye </h3>
-            <p>
-                bye</p>
-        </div> -->
         </panel>
   </v-flex>
   </v-layout>
@@ -83,7 +72,7 @@ export default {
     }
   },
   async mounted () {
-    this.song = (await SongsService.index()).data
+    this.songs = (await SongsService.index()).data
   }
 }
 </script>
