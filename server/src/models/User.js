@@ -18,8 +18,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
-    password: DataTypes.STRING
-  }, {
+    password: DataTypes.STRING,
+    nom: DataTypes.STRING,
+    prenom: DataTypes.STRING,
+    numero: Int16Array,
+    adresse: DataTypes.TEXT,
+    admin: Boolean
+  },
+   {
     hooks: {
       beforeCreate: hashPassword,
       beforeUpdate: hashPassword

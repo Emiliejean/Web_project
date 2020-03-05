@@ -5,9 +5,9 @@
             class="home"
             tag="span"
             :to="{
-              name: 'songs'
+              name: 'root'
               }">
-            TabTracker
+            Breath
             </router-link>
         </v-toolbar-title>
 
@@ -16,11 +16,28 @@
             flat
             dark
             :to="{name: 'songs'}">
-            Browse
+            Rooms
+            </v-btn>
+            <v-btn
+            flat
+            dark
+            :to="{name: 'restaurant'}">
+            Restaurant
+            </v-btn>
+            <v-btn
+            flat
+            dark
+            :to="{name: 'agenda'}">
+            Agenda
+            </v-btn>
+            <v-btn
+            flat
+            dark
+            :to="{name: 'admin-songs'}">
+            Admin
             </v-btn>
         </v-toolbar-items>
         <v-spacer></v-spacer>
-
         <v-toolbar-items>
           <v-btn
           v-if="!$store.state.isUserLoggedIn"

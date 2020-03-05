@@ -33,4 +33,5 @@ export default {
 .danger-alert {
   color: red;
 }
+
 </style>

@@ -62,5 +62,28 @@ module.exports = {
         error: 'an error has occured trying to update the song'
       })
     }
-  }
+  },
+  async delete (req, res) {
+    try {
+      const userId= req.user.id
+      const {songId} = req.params
+      const song = await Song.findOne({
+        where: {
+          id: songId,
+          UserId: userId
+        }
+      })
+      if (!song) {
+        return res.status(403).send({
+          error: 'you do not have access to this song'
+        })
+      }
+       await song.destroy()
+      res.send(song)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occured trying to delete the song.'
+      })
+    }
+}
 }

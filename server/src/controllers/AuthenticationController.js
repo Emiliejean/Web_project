@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const {User} = require('../models')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 function jwtSignUser (user) {
@@ -12,7 +12,7 @@ module.exports = {
     try {
       const user = await User.create(req.body)
       const userJson = user.toJSON()
-      res.send(user.toJSON())
+      //res.send(user.toJSON())
       res.send({
         user: userJson,
         token: jwtSignUser(userJson)
@@ -25,7 +25,7 @@ module.exports = {
   },
   async login (req, res) {
     try {
-      const { email, password } = req.body
+      const { email, password, nom, prenom, numero, admin, adresse } = req.body
       const user = await User.findOne({
         where: {
           email: email
@@ -49,6 +49,7 @@ module.exports = {
         token: jwtSignUser(userJson)
       })
     } catch (err) {
+      console.log(err)
       res.status(500).send({
         error: 'An error has occured trying to log in'
       })
