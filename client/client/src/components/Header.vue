@@ -15,7 +15,7 @@
             <v-btn
             flat
             dark
-            :to="{name: 'songs'}">
+            :to="{name: 'rooms'}">
             Rooms
             </v-btn>
             <v-btn
@@ -33,7 +33,7 @@
             <v-btn
             flat
             dark
-            :to="{name: 'admin-songs'}">
+            :to="{name: 'admin-rooms'}">
             Admin
             </v-btn>
         </v-toolbar-items>
@@ -72,7 +72,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name: 'songs'
+        name: 'rooms'
       })
     }
   }

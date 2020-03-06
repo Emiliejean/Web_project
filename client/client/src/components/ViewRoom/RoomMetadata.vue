@@ -1,25 +1,25 @@
 <template>
- <panel title="Song Metadata">
+ <panel title="Room Metadata">
    <v-layout>
         <v-flex xs6>
-<div class="song-title">
-  {{song.title}}
+<div class="room-name">
+  {{room.name}}
 </div>
-<div class="song-artist">
-  {{song.artist}}
+<div class="room-number">
+  {{room.number}}
 </div>
-<div class="song-genre">
-  {{song.genre}}
+<div class="room-price">
+  {{room.price}}
 </div>
 
 <v-btn
         dark
         class="cyan"
         :to="{
-          name: 'song-edit',
+          name: 'room-edit',
           params () {
             return {
-            songId: song.id
+            roomId: room.id
             }
           }
             }">
@@ -43,9 +43,9 @@
         </v-btn>
         </v-flex>
           <v-flex xs6>
-<img class="album-image" :src="song.albumImageUrl"/>
+<img class="imageurl" :src="room.imageUrl"/>
 <br>
-{{song.album}}
+{{room.price}}
         </v-flex>
         </v-layout>
       </panel>
@@ -56,7 +56,7 @@ import {mapState} from 'vuex'
 import BookmarksService from '@/services/BookmarksService'
 export default {
   props: [
-    'song'
+    'room'
   ],
   data () {
     return {
@@ -70,13 +70,13 @@ export default {
     ])
   },
   watch: {
-    async song () {
+    async room () {
       if (!this.isUserLoggedIn) {
         return
       }
       try {
         const bookmarks = (await BookmarksService.index({
-          songId: this.song.id
+          roomId: this.room.id
         })).data
         if (bookmarks.length) {
           this.bookmark = bookmarks[0]
@@ -90,7 +90,7 @@ export default {
     async setAsBookmark () {
       try {
         this.bookmark = (await BookmarksService.post({
-          songId: this.song.id
+          roomId: this.room.id
         })).data
       } catch (err) {
         console.log(err)
@@ -109,22 +109,22 @@ export default {
 </script>
 
 <style scoped>
-.song {
+.room {
   padding: 20px;
   height: 330px;
   overflow: hidden;
 }
 
-.song-title {
+.room-name {
   font-size: 30px;
 }
-.song-artist {
+.room-number {
 font-size: 24px;
 }
-.song-genre {
+.room-price {
 font-size: 18px;
 }
-.album-image {
+.imageurl {
   width:  100%;
  margin:  0 auto;
 }

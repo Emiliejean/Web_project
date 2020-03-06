@@ -5,23 +5,23 @@
         dark
         class="cyan"
         :to="{
-          name: 'song-edit',
+          name: 'room-edit',
           params () {
             return {
-            songId: song.id
+            roomId: room.id
             }
           }
             }">
         Edit
         </v-btn>
          <div
-      v-for="song in songs"
-      class="song"
-      :key="song.id">
+      v-for="room in rooms"
+      class="room"
+      :key="room.id">
       <v-layout>
         <v-flex xs6>
-<div class="song-title">
-  {{song.title}}
+<div class="room-name">
+  {{room.name}}
   </div>
 
   </v-flex>
@@ -35,7 +35,7 @@
 import {mapState} from 'vuex'
 export default {
   computed: {
-    ...mapState(['song'])
+    ...mapState(['room'])
   }
 }
 </script>

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js src/app.js --exec \"npm run lint && node\"",
+    "dev": "node build/dev-server.js",
+    "start": "node app.js",
+    "postinstall": "npm run build",
     "lint": "true || ./node_modules/.bin/eslint src/**/*.js --fix",
     "seed": "node ./seed"
   },

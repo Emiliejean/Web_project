@@ -4,13 +4,13 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld' //accueil
 import Register from '@/components/Register'
 import Login from '@/components/Login'
-import Songs from '@/components/Songs/Index'
-import CreateSong from '@/components/CreateSong'
-import ViewSong from '@/components/ViewSong/Index'
-import EditSong from '@/components/EditSong'
+import Rooms from '@/components/Rooms/Index'
+import CreateRoom from '@/components/CreateRoom'
+import ViewRoom from '@/components/ViewRoom/Index'
+import EditRoom from '@/components/EditRoom'
 import Restaurant from '@/components/Restaurant'
 import Agenda from '@/components/Agenda'
-import AdminSongsPanel from '@/components/Songs/AdminSongsPanel'
+import AdminRoomsPanel from '@/components/Rooms/AdminRoomsPanel'
 Vue.use(Router)
 
 export default new Router({
@@ -31,9 +31,9 @@ export default new Router({
     component: Login
   },
   {
-    path: '/songs',
-    name: 'songs',
-    component: Songs
+    path: '/rooms',
+    name: 'rooms',
+    component: Rooms
   },
   {
     path: '/restaurant',
@@ -46,28 +46,28 @@ export default new Router({
     component: Agenda
   },
   {
-  path: '/songs/create',
-    name: 'songs-create',
-    component: CreateSong
+  path: '/rooms/create',
+    name: 'rooms-create',
+    component: CreateRoom
   },
   {
-    path: '/songs/:songId',
-      name: 'song',
-      component: ViewSong
+    path: '/rooms/:roomId',
+      name: 'room',
+      component: ViewRoom
     },
     {
-      path: '/songs/:songId/edit',
-        name: 'song-edit',
-        component: EditSong
+      path: '/rooms/:roomId/edit',
+        name: 'room-edit',
+        component: EditRoom
       },
       {
         path: '*',
         redirect: 'root'
       },
       {
-        path: '/admin/songs',
-        name: 'admin-songs',
-        component: AdminSongsPanel
+        path: '/admin/rooms',
+        name: 'admin-rooms',
+        component: AdminRoomsPanel
       }
   ]
 })

@@ -1,0 +1,21 @@
+
+[{
+    
+    "name": "Room1",
+    "number": "1",
+    "price": "100",
+    "numberpers": "3",
+    "imageUrl": "https://www.ville-hesingue.fr/wp-content/uploads/2018/06/sticker-musique-en-peinture.png",
+    "youtubeId": "YQuuuHsXMglC9A"
+    
+}, {
+    
+    "namee": "Room2",
+    "number": "2",
+    "price": "50",
+    "numberpers": "2",
+    "imageUrl": "https://www.ville-hesingue.fr/wp-content/uploads/2018/06/sticker-musique-en-peinture.png",
+    "youtubeId": "YQuuuHsXMglC9A"
+    
+} ]
+

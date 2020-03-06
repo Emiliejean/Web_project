@@ -1,32 +1,32 @@
 <template>
 <v-layout>
   <v-flex xs6 v-if="isUserLoggedIn">
-    <songs-bookmarks/>
-     <recently-viewed-songs class="mt-2"/>
+    <rooms-bookmarks/>
+     <recently-viewed-rooms class="mt-2"/>
   </v-flex>
 <v-flex :class="{
   xs12: !isUserLoggedIn,
   xs6: isUserLoggedIn
 }" class="ml-2">
-  <songs-search-panel />
-   <songs-panel class="mt-2" />
+  <rooms-search-panel />
+   <rooms-panel class="mt-2" />
   </v-flex>
   </v-layout>
 </template>
 
 <script>
-import SongsPanel from './SongsPanel'
-import SongsBookmarks from './SongsBookmarks'
-import SongsSearchPanel from './SongsSearchPanel'
-import SongsService from '@/services/SongsService'
-import RecentlyViewedSongs from './RecentlyViewedSongs'
+import RoomsPanel from './RoomsPanel'
+import RoomsBookmarks from './RoomsBookmarks'
+import RoomsSearchPanel from './RoomsSearchPanel'
+import RoomsService from '@/services/RoomsService'
+import RecentlyViewedRooms from './RecentlyViewedRooms'
 import {mapState} from 'vuex'
 export default {
   components: {
-    SongsPanel,
-    SongsSearchPanel,
-    SongsBookmarks,
-    RecentlyViewedSongs
+    RoomsPanel,
+    RoomsSearchPanel,
+    RoomsBookmarks,
+    RecentlyViewedRooms
   },
   computed: {
     ...mapState([
@@ -35,32 +35,32 @@ export default {
   },
   data () {
     return {
-      songs: null
+      rooms: null
     }
   },
   async mounted () {
-    this.songs = (await SongsService.index()).data
+    this.rooms = (await RoomsService.index()).data
   }
 }
 </script>
 
 <style scoped>
-.song {
+.room {
   padding: 20px;
   height: 330px;
   overflow: hidden;
 }
 
-.song-title {
+.room-name {
   font-size: 30px;
 }
-.song-artist {
+.room-number {
 font-size: 24px;
 }
-.song-genre {
+.room-price {
 font-size: 18px;
 }
-.album-image {
+.imageurl {
   width:  70%;
   margin:  0 auto;
 

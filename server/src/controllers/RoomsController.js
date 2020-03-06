@@ -1,16 +1,16 @@
-const { Song } = require('../models')
+const { Room } = require('../models')
 const { Op } = require('sequelize')
 
 module.exports = {
   async index (req, res) {
     try {
-      let songs = null
+      let rooms = null
       const search = req.query.search
       if (search) {
-        songs = await Song.findAll({
+        rooms = await Room.findAll({
           where: {
             [Op.or]: [
-              'title', 'artist', 'genre', 'album'
+              'name', 'number', 'price', 'numberpers'
             ].map(key => ({
               [key]: {
                 [Op.like]: `%${search}%`
@@ -19,70 +19,70 @@ module.exports = {
           }
         })
       } else {
-        songs = await Song.findAll({
+        rooms = await Room.findAll({
         })
       }
-      res.send(songs)
+      res.send(rooms)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured trying to fetch the songs.'
+        error: 'An error has occured trying to fetch the rooms.'
       })
     }
   },
   async show (req, res) {
     try {
-      const song = await Song.findByPk(req.params.songId)
-      res.send(song)
+      const room = await Room.findByPk(req.params.roomId)
+      res.send(room)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured trying to show the songs.'
+        error: 'An error has occured trying to show the rooms.'
       })
     }
   },
   async post (req, res) {
     try {
-      const song = await Song.create(req.body)
-      res.send(song)
+      const room = await Room.create(req.body)
+      res.send(room)
     } catch (err) {
       res.status(500).send({
-        error: 'an error has occured trying to create the song'
+        error: 'an error has occured trying to create the rooms'
       })
     }
   },
   async put (req, res) {
     try {
-      const song = await Song.update(req.body, {
+      const room = await Room.update(req.body, {
         where: {
-          id: req.params.songId
+          id: req.params.roomId
         }
       })
-      res.send(song)
+      res.send(room)
     } catch (err) {
       res.status(500).send({
-        error: 'an error has occured trying to update the song'
+        error: 'an error has occured trying to update the rooms'
       })
     }
   },
   async delete (req, res) {
     try {
       const userId= req.user.id
-      const {songId} = req.params
-      const song = await Song.findOne({
+      const {roomId} = req.params
+      const room = await Room.findOne({
         where: {
-          id: songId,
+          id: roomId,
           UserId: userId
         }
       })
-      if (!song) {
+      if (!room) {
         return res.status(403).send({
-          error: 'you do not have access to this song'
+          error: 'you do not have access to this room'
         })
       }
-       await song.destroy()
-      res.send(song)
+       await room.destroy()
+      res.send(room)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured trying to delete the song.'
+        error: 'An error has occured trying to delete the room.'
       })
     }
 }

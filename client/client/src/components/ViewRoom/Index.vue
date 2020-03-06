@@ -2,38 +2,36 @@
 <div>
 <v-layout>
 <v-flex xs6>
-  <song-metadata :song="song"/>
+  <room-metadata :room="room"/>
     </v-flex>
 
     <v-flex xs6 class="ml-2">
-      <you-tube :youtubeId="song.youtubeId"/>
+      <you-tube :youtubeId="room.youtubeId"/>
       </v-flex>
 </v-layout>
 
 <v-layout xs6 class="mt-2">
     <v-flex xs6>
-      <tab :song="song"/>
+      <tab :room="room"/>
   </v-flex>
 
 <v-flex xs6 class="ml-2">
-  <lyrics :song="song"/>
+  <lyrics :room="room"/>
 </v-flex>
 </v-layout>
 </div>
 </template>
 <script>
 import {mapState} from 'vuex'
-import Lyrics from './Lyrics'
-import Tab from './Tab'
-import SongMetadata from './SongMetadata'
+import RoomMetadata from './RoomMetadata'
 import YouTube from './YouTube'
-import SongsService from '@/services/SongsService'
-import SongHistoryService from '@/services/SongHistoryService'
+import RoomsService from '@/services/RoomsService'
+import RoomHistoryService from '@/services/RoomHistoryService'
 
 export default {
   data () {
     return {
-      song: {}
+      room: {}
     }
   },
   computed: {
@@ -44,19 +42,17 @@ export default {
     ])
   },
   async mounted () {
-    const songId = this.route.params.songId
-    this.song = (await SongsService.show(songId)).data
+    const roomId = this.route.params.roomId
+    this.room = (await RoomsService.show(roomId)).data
     if (this.isUserLoggedIn) {
-      SongHistoryService.post({
-        songId: songId
+      RoomHistoryService.post({
+        roomId: roomId
       })
     }
   },
   components: {
-    SongMetadata,
-    YouTube,
-    Lyrics,
-    Tab
+    RoomMetadata,
+    YouTube
   }
 }
 </script>

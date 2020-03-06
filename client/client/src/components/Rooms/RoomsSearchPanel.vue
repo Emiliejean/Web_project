@@ -1,7 +1,7 @@
 <template>
 <panel title="Search ">
 <v-text-field
-label="Search by song title, artiste, album, or genre"
+label="Search by name, number of persons or price"
 v-model="search"
 ></v-text-field>
 </panel>
@@ -18,7 +18,7 @@ export default {
   watch: {
     search: _.debounce(async function (value) {
       const route = {
-        path: 'songs'
+        path: 'rooms'
       }
       if (this.search !== '') {
         route.query = {

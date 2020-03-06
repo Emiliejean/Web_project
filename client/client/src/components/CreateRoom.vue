@@ -1,61 +1,47 @@
 <template>
 <v-layout>
     <v-flex xs4>
-    <panel title= "Song Metadata">
+    <panel title= "Room Metadata">
         <v-text-field
-        label="Title"
+        label="Name"
         required
         :rules="[required]"
-        v-model="song.title"
+        v-model="room.name"
         ></v-text-field>
 
         <v-text-field
-        label="Artist"
+        label="Number"
         required
         :rules="[required]"
-        v-model="song.artist"
+        v-model="room.number"
         ></v-text-field>
         <v-text-field
-        label="Genre"
+        label="Price"
         required
         :rules="[required]"
-        v-model="song.genre"
+        v-model="room.price"
         ></v-text-field>
         <v-text-field
-        label="Album"
+        label="NumberPers"
         required
         :rules="[required]"
-        v-model="song.album"
+        v-model="room.numberpers"
         ></v-text-field>
-        <v-text-field
-        label="Album Image Url"
+        </panel>
+    </v-flex>
+    <v-flex xs8>
+        <panel title="Room Structure" class="ml-2">
+ <v-text-field
+        label="Image Url"
         required
         :rules="[required]"
-        v-model="song.albumImageUrl"
+        v-model="room.imageUrl"
         ></v-text-field>
         <v-text-field
         label="Youtube ID"
         required
         :rules="[required]"
-        v-model="song.youtubeId"
-        ></v-text-field>
-    </panel>
-    </v-flex>
-    <v-flex xs8>
-        <panel title="Song Structure" class="ml-2">
-<v-text-field
-        label="Tab"
-        required
-        :rules="[required]"
-        multi-line
-        v-model="song.tab"
-        ></v-text-field>
-        <v-text-field
-        label="Lyrics"
-        required
-        :rules="[required]"
-        multi-line
-        v-model="song.lyrics"
+        v-model="room.youtubeId"
         ></v-text-field>
         </panel>
         <div class="danger-alert" v-if="error">
@@ -65,26 +51,24 @@
         dark
         class="cyan"
         @click="create">
-        Create Song
+        Create Room
         </v-btn>
     </v-flex>
 </v-layout>
 </template>
 
 <script>
-import SongsService from '@/services/SongsService'
+import RoomsService from '@/services/RoomsService'
 export default {
   data () {
     return {
-      song: {
-        title: null,
-        artist: null,
-        genre: null,
-        album: null,
-        albumImageUrl: null,
-        youtubeId: null,
-        lyrics: null,
-        tab: null
+      room: {
+        name: null,
+        number: null,
+        price: null,
+        numberpers: null,
+        imageUrl: null,
+        youtubeId: null
       },
       error: null,
       required: (value) => !!value || 'Required.'
@@ -94,16 +78,16 @@ export default {
     async create () {
       this.error = null
       const areAllFieldsFilledIn = Object
-        .keys(this.song)
-        .every(key => !!this.song[key])
+        .keys(this.room)
+        .every(key => !!this.room[key])
       if (!areAllFieldsFilledIn) {
         this.error = 'Please fill in all the required fields'
         return
       }
       try {
-        await SongsService.post(this.song)
+        await RoomsService.post(this.room)
         this.$router.push({
-          name: 'admin-songs'
+          name: 'admin-rooms'
         })
       } catch (err) {
         console.log(err)

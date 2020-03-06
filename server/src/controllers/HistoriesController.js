@@ -1,6 +1,6 @@
 const {
   History,
-  Song,
+  Room,
   User
 } = require('../models')
 const {Op} = require('sequelize')
@@ -16,17 +16,17 @@ module.exports = {
         },
           include: [
             {
-              model: Song
+              model: Room
             }
           ]
       })
       .map(history => history.toJSON())
       .map(history => _.extend(
         {},
-        history.Song,
+        history.Room,
         history
         ))
-        res.send(_.uniqBy(histories, history => history.SongId))
+        res.send(_.uniqBy(histories, history => history.RoomId))
 
     } catch (err) {
       res.status(500).send({
@@ -37,9 +37,9 @@ module.exports = {
     async post (req, res) {
         try {
           const userId = req.user.id
-          const {songId} = req.body
+          const {roomId} = req.body
           const history = await History.create({
-              SongId: songId,
+              RoomId: roomId,
               UserId: userId
             })
             res.send(history)

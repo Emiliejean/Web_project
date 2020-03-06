@@ -1,8 +1,8 @@
 <template>
- <panel title="Tab">
+ <panel title="Lyrics">
     <textarea
     readonly
-        v-model="song.tab"
+        v-model="room.lyrics"
         ></textarea>
 </panel>
 </template>
@@ -10,7 +10,7 @@
 <script>
 export default {
   props: [
-    'song'
+    'room'
   ]
 }
 </script>

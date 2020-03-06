@@ -6,10 +6,10 @@
       :items="bookmarks">
       <template slot ="items" slot-scope="slotProps">
           <td class="text-xs-right">
-              {{slotProps.item.title}}
+              {{slotProps.item.name}}
           </td>
           <td class="text-xs-right">
-              {{slotProps.item.artist}}
+              {{slotProps.item.number}}
           </td>
       </template>
   </v-data-table>
@@ -24,12 +24,12 @@ export default {
     return {
       headers: [
         {
-          text: 'Title',
-          value: 'title'
+          text: 'Name',
+          value: 'name'
         },
         {
-          text: 'Artist',
-          value: 'artist'
+          text: 'Number',
+          value: 'number'
         }
       ],
       pagination: {

@@ -1,8 +1,8 @@
 <template>
-    <panel title="Songs">
+    <panel title="Rooms">
          <v-btn
             slot="action"
-            :to="{name: 'songs-create'}"
+            :to="{name: 'rooms-create'}"
          class="cyan accent-2"
   light
   medium
@@ -13,56 +13,56 @@
     <v-icon>add</v-icon> <!-- mdi-plus -->
   </v-btn>
       <div
-      v-for="song in songs"
-      class="song"
-      :key="song.id">
+      v-for="room in rooms"
+      class="room"
+      :key="room.id">
       <v-layout>
         <v-flex xs6>
-<div class="song-title">
-  {{song.title}}
+<div class="room-name">
+  {{room.name}}
 </div>
-<div class="song-artist">
-  {{song.artist}}
+<div class="room-number">
+  {{room.number}}
 </div>
-<div class="song-genre">
-  {{song.genre}}
+<div class="room-price">
+  {{room.price}}
 </div>
  <v-btn
         dark
         class="cyan"
         :to="{
-          name: 'song',
+          name: 'room',
           params: {
-            songId: song.id
+            roomId: room.id
             }
             }">
         View
         </v-btn>
         </v-flex>
           <v-flex xs6>
-<img class="album-image" :src="song.albumImageUrl"/>
+<img class="imageurl" :src="room.imageUrl"/>
         </v-flex>
       </v-layout>
-        {{song.title}} -
-        {{song.artist}} -
-        {{song.album}}
+        {{room.name}} -
+        {{room.number}} -
+        {{room.price}}
       </div>
         </panel>
 </template>
 
 <script>
-import SongsService from '@/services/SongsService'
+import RoomsService from '@/services/RoomsService'
 export default {
   data () {
     return {
-      songs: null
+      rooms: null
     }
   },
   watch: {
     '$route.query.search': {
       immediate: true,
       async handler (value) {
-        this.songs = (await SongsService.index(value)).data
+        this.rooms = (await RoomsService.index(value)).data
       }
     }
   }
@@ -70,22 +70,22 @@ export default {
 </script>
 
 <style scoped>
-.song {
+.room {
   padding: 20px;
   height: 330px;
   overflow: hidden;
 }
 
-.song-title {
+.room-name {
   font-size: 30px;
 }
-.song-artist {
+.room-number {
 font-size: 24px;
 }
-.song-genre {
+.room-price {
 font-size: 18px;
 }
-.album-image {
+.imageurl {
   width:  70%;
   margin:  0 auto;
 
