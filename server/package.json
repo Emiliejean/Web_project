@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service-build",
     "dev": "node build/dev-server.js",
     "start": "node app.js",
     "postinstall": "npm run build",
