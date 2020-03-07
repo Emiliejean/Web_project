@@ -10,7 +10,10 @@
       "start": "node server.js",
       "postinstall": "npm run build",
       "lint": "true || ./node_modules/.bin/eslint src/**/*.js --fix",
-      "seed": "node ./seed"
+      "seed": "node ./seed",
+      "engines": {
+          "node": "13.9.0"
+      }
     },
     "dependencies": {
       "bcrypt-nodejs": "0.0.3",
