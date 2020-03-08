@@ -1,5 +1,5 @@
 <template>
-<panel title="Search ">
+<panel name= "Search ">
 <v-text-field
 label="Search by name, number of persons or price"
 v-model="search"

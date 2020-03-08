@@ -45,10 +45,10 @@
           <v-flex xs6>
 <img class="imageurl" :src="room.imageUrl"/>
         </v-flex>
+        {{room.name}}
+       <p> / room number : {{room.number}}  /
+        price: {{room.price}} </p>
       </v-layout>
-        {{room.name}} -
-        {{room.price}} -
-        {{room.price}}
       </div>
         </panel>
 </template>

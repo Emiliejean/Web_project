@@ -1,5 +1,5 @@
 <template>
-<panel title="YouTube Video">
+<panel name="YouTube Video">
     <youtube
       :video-id="youtubeId"
       :player-width="600"

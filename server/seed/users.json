@@ -1,11 +1,6 @@
 [
     {
         "email": "emilie@gmail.com",
-        "password": "12345678",
-        "nom": "jean",
-        "prenom": "emilie",
-        "numero": "0778767654",
-        "adresse": "1 lot les écoles",
-        "admin": "true"
+        "password": "12345678"
     }
 ]

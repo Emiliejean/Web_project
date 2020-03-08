@@ -1,8 +1,8 @@
 <template>
-    <panel name="Rooms">
+    <panel name="Activities">
          <v-btn
             slot="action"
-            :to="{name: 'rooms-create'}"
+            :to="{name: 'agendas-create'}"
          class="cyan accent-2"
   light
   medium
@@ -13,34 +13,28 @@
     <v-icon>add</v-icon> <!-- mdi-plus -->
   </v-btn>
       <div
-      v-for="room in rooms"
-      class="room"
-      :key="room.id">
+      v-for="agenda in agendas"
+      class="agenda"
+      :key="agenda.id">
       <v-layout>
         <v-flex xs6>
-<div class="room-name">
-{{room.name}}
+<div class="agenda-name">
+{{agenda.name}}
 </div>
-<div class="room-number">
-  <p>  room number :{{room.number}} </p>
-</div>
-<div class="room-price">
-  <p> price :{{room.price}} </p>
+<div class="agenda-price">
+  <p> price :{{agenda.price}} </p>
 </div>
  <v-btn
         dark
         class="cyan"
         :to="{
-          name: 'room',
+          name: 'agenda',
           params: {
-            roomId: room.id
+            agendaId: agenda.id
             }
             }">
         View
         </v-btn>
-        </v-flex>
-          <v-flex xs6>
-<img class="imageurl" :src="room.imageUrl"/>
         </v-flex>
       </v-layout>
       </div>
@@ -48,18 +42,18 @@
 </template>
 
 <script>
-import RoomsService from '@/services/RoomsService'
+import AgendaService from '@/services/AgendaService'
 export default {
   data () {
     return {
-      rooms: null
+      agendas: null
     }
   },
   watch: {
     '$route.query.search': {
       immediate: true,
       async handler (value) {
-        this.rooms = (await RoomsService.index(value)).data
+        this.agendas = (await AgendaService.index(value)).data
       }
     }
   }
@@ -67,19 +61,16 @@ export default {
 </script>
 
 <style scoped>
-.room {
+.agenda {
   padding: 20px;
   height: 330px;
   overflow: hidden;
 }
 
-.room-name {
+.agenda-name {
   font-size: 30px;
 }
-.room-number {
-font-size: 24px;
-}
-.room-price {
+.agenda-price {
 font-size: 18px;
 }
 .imageurl {

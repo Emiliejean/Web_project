@@ -10,15 +10,6 @@
       </v-flex>
 </v-layout>
 
-<v-layout xs6 class="mt-2">
-    <v-flex xs6>
-      <tab :room="room"/>
-  </v-flex>
-
-<v-flex xs6 class="ml-2">
-  <lyrics :room="room"/>
-</v-flex>
-</v-layout>
 </div>
 </template>
 <script>

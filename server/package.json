@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service-build",
-    "dev": "node build/dev-server.js",
-    "start": "node app.js",
-    "postinstall": "npm run build",
+    "start": "./node_modules/nodemon/bin/nodemon.js src/app.js --exec 'npm run lint && node'",
     "lint": "true || ./node_modules/.bin/eslint src/**/*.js --fix",
     "seed": "node ./seed"
   },

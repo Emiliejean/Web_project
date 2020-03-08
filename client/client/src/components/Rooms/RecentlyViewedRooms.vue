@@ -1,5 +1,5 @@
 <template>
-<panel title="Recently Viewed Rooms">
+<panel name="Recently Viewed Rooms">
   <v-data-table
       :headers="headers"
       :pagination.sync="pagination"

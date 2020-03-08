@@ -6,10 +6,13 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Rooms from '@/components/Rooms/Index'
 import CreateRoom from '@/components/CreateRoom'
+import CreateAgenda from '@/components/CreateAgenda'
 import ViewRoom from '@/components/ViewRoom/Index'
+import ViewAgenda from '@/components/ViewAgenda/Index'
 import EditRoom from '@/components/EditRoom'
+import EditAgenda from '@/components/EditAgenda'
 import Restaurant from '@/components/Restaurant'
-import Agenda from '@/components/Agenda'
+import Agendas from '@/components/Agendas/Index'
 import AdminRoomsPanel from '@/components/Rooms/AdminRoomsPanel'
 Vue.use(Router)
 
@@ -41,9 +44,9 @@ export default new Router({
     component: Restaurant
   },
   {
-    path: '/agenda',
-    name: 'agenda',
-    component: Agenda
+    path: '/agendas',
+    name: 'agendas',
+    component: Agendas
   },
   {
   path: '/rooms/create',
@@ -51,15 +54,30 @@ export default new Router({
     component: CreateRoom
   },
   {
+    path: '/agendas/create',
+      name: 'agendas-create',
+      component: CreateAgenda
+    },
+  {
     path: '/rooms/:roomId',
       name: 'room',
       component: ViewRoom
     },
     {
+      path: '/agendas/:agendaId',
+        name: 'agenda',
+        component: ViewAgenda
+      },
+    {
       path: '/rooms/:roomId/edit',
         name: 'room-edit',
         component: EditRoom
       },
+      {
+        path: '/agendas/:agendaId/edit',
+          name: 'agenda-edit',
+          component: EditAgenda
+        },
       {
         path: '*',
         redirect: 'root'

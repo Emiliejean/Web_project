@@ -1,7 +1,7 @@
 <template>
 <v-layout column>
 <v-flex xs6 offset-xs3>
-  <panel title='Register'>
+  <panel name='Register'>
     <form
     name="tab-tracker-form"
 autocomplete="off">
@@ -16,7 +16,7 @@ v-model="password"
 type = "password"
 autocomplete="new-password"
 ></v-text-field>
-<br>
+<!--<br>
 <v-text-field
 label="Nom"
 v-model="nom"
@@ -40,7 +40,7 @@ v-model="adresse"
 <v-text-field
 label="Admin"
 v-model="admin"
-></v-text-field>
+></v-text-field> -->
 </form>
 <br>
   <div class="danger-alert" v-html="error" />
@@ -53,6 +53,7 @@ v-model="admin"
   </v-flex>
   </v-layout>
   </template>
+
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 export default {

@@ -1,43 +1,24 @@
 <template>
 <v-layout>
     <v-flex xs6 offset-xs3>
-    <panel name= "Edit Room Metadata ">
+    <panel name= "Edit Activity Metadata ">
         <v-text-field
         label="Name"
         required
         :rules="[required]"
-        v-model="room.name"
-        ></v-text-field>
-
-        <v-text-field
-        label="Number"
-        required
-        :rules="[required]"
-        v-model="room.number"
+        v-model="agenda.name"
         ></v-text-field>
         <v-text-field
         label="Price"
         required
         :rules="[required]"
-        v-model="room.price"
+        v-model="agenda.price"
         ></v-text-field>
         <v-text-field
         label="NumberPers"
         required
         :rules="[required]"
-        v-model="room.numberpers"
-        ></v-text-field>
-        <v-text-field
-        label=" Image Url"
-        required
-        :rules="[required]"
-        v-model="room.imageUrl"
-        ></v-text-field>
-        <v-text-field
-        label="Youtube ID"
-        required
-        :rules="[required]"
-        v-model="room.youtubeId"
+        v-model="agenda.numberpers"
         ></v-text-field>
         <div class="danger-alert" v-if="error">
             {{error}}
@@ -46,7 +27,7 @@
         dark
         class="cyan"
         @click="save">
-        Save Room
+        Save Agenda
         </v-btn>
     </panel>
     </v-flex>
@@ -54,17 +35,14 @@
 </template>
 
 <script>
-import RoomsService from '@/services/RoomsService'
+import AgendaService from '@/services/AgendaService'
 export default {
   data () {
     return {
-      room: {
+      agenda: {
         name: null,
-        number: null,
         price: null,
-        numberpers: null,
-        imageUrl: null,
-        youtubeId: null
+        numberpers: null
       },
       error: null,
       required: (value) => !!value || 'Required.'
@@ -74,19 +52,19 @@ export default {
     async save () {
       this.error = null
       const areAllFieldsFilledIn = Object
-        .keys(this.room)
-        .every(key => !!this.room[key])
+        .keys(this.agenda)
+        .every(key => !!this.agenda[key])
       if (!areAllFieldsFilledIn) {
         this.error = 'Please fill in all the required fields'
         return
       }
-      const roomId = this.$store.state.route.params.roomId
+      const agendaId = this.$store.state.route.params.agendaId
       try {
-        await RoomsService.put(this.room)
+        await AgendaService.put(this.agenda)
         this.$router.push({
-          name: 'room',
+          name: 'agenda',
           params: {
-            roomId: roomId
+            agendaId: agendaId
           }
         })
       } catch (err) {
@@ -96,8 +74,8 @@ export default {
   },
   async mounted () {
     try {
-      const roomId = this.$store.state.route.params.roomId
-      this.room = (await RoomsService.show(roomId)).data
+      const agendaId = this.$store.state.route.params.agendaId
+      this.agenda = (await AgendaService.show(agendaId)).data
     } catch (err) {
       console.log(err)
     }

@@ -27,7 +27,7 @@
             <v-btn
             flat
             dark
-            :to="{name: 'agenda'}">
+            :to="{name: 'agendas'}">
             Agenda
             </v-btn>
             <v-btn

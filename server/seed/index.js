@@ -3,11 +3,13 @@ const {
     Room,
     User,
     Bookmark,
-    History
+    History,
+    Agenda
 } = require('../src/models')
 const Promise = require('bluebird')
 const rooms = require('./rooms.json')
 const users = require('./users.json')
+const agendas = require('./agendas.json')
 const bookmarks = require('./bookmarks.json')
 const histories = require('./histories.json')
 sequelize.sync({force: true})
@@ -20,6 +22,11 @@ await Promise.all(
 await Promise.all(
     rooms.map(room => {
         Room.create(room)
+    })
+)
+await Promise.all(
+    agendas.map(agenda => {
+        Agenda.create(agenda)
     })
 )
 await Promise.all(

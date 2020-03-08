@@ -1,15 +1,15 @@
 <template>
- <panel title="Room Metadata">
+ <panel name="Room Metadata">
    <v-layout>
         <v-flex xs6>
 <div class="room-name">
   {{room.name}}
 </div>
 <div class="room-number">
-  {{room.number}}
+  <p> room number : {{room.number}} </p>
 </div>
 <div class="room-price">
-  {{room.price}}
+  <p> price : {{room.price}} </p>
 </div>
 
 <v-btn
