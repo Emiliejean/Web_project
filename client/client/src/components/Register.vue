@@ -16,36 +16,13 @@ v-model="password"
 type = "password"
 autocomplete="new-password"
 ></v-text-field>
-<!--<br>
-<v-text-field
-label="Nom"
-v-model="nom"
-></v-text-field>
-<br>
-<v-text-field
-label="Prénom"
-v-model="prenom"
-></v-text-field>
-<br>
-<v-text-field
-label="Numéro Téléphone"
-v-model="numero"
-></v-text-field>
-<br>
-<v-text-field
-label="Adresse"
-v-model="adresse"
-></v-text-field>
-<br>
-<v-text-field
-label="Admin"
-v-model="admin"
-></v-text-field> -->
 </form>
 <br>
-  <div class="danger-alert" v-html="error" />
+  <div class="danger-alert" v-if="error">
+            {{error}}
+        </div>
     <br>
-  <v-btn
+<v-btn
   dark
   class="cyan"
   @click="register">Register</v-btn>
@@ -61,11 +38,6 @@ export default {
     return {
       email: '',
       password: '',
-      nom: '',
-      prenom: '',
-      numero: '',
-      adresse: '',
-      admin: '',
       error: null
     }
   },

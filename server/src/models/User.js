@@ -18,13 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
-    password: DataTypes.STRING,
-    /*nom: DataTypes.STRING,
-    prenom: DataTypes.STRING,
-    numero: DataTypes.INTEGER,
-    adresse: DataTypes.TEXT,
-    admin: DataTypes.BOOLEAN,
-    defaultValue : "false"*/
+    password: DataTypes.STRING
   },
    {
     hooks: {
